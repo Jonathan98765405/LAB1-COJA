@@ -1,0 +1,430 @@
+/* ============================================
+   Jonathan Coja — Portfolio Styles
+   Palette: deep navy ink, mint accent, amber highlight
+   Type: Sora (display) + Inter (body)
+   ============================================ */
+
+:root {
+  --ink: #0b1220;
+  --surface: #121b2e;
+  --surface-raised: #17243c;
+  --line: #263449;
+  --text: #e8edf4;
+  --text-dim: #9aa8bd;
+  --mint: #5eead4;
+  --amber: #f2b84b;
+
+  --font-display: 'Sora', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+  --max-width: 860px;
+  --radius: 6px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--mint);
+  color: var(--ink);
+}
+
+a {
+  color: var(--mint);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+a:hover,
+a:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--text);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.1rem);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.15rem;
+  color: var(--mint);
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 68ch;
+  color: var(--text-dim);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Layout shell ---------- */
+
+header,
+main > section,
+footer {
+  padding: 3.5rem 1.5rem;
+}
+
+main > section,
+footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ---------- Header / Hero ---------- */
+
+header {
+  position: relative;
+  padding-top: 4.5rem;
+  padding-bottom: 3rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--line);
+}
+
+header h1 {
+  font-size: clamp(2.2rem, 1.6rem + 3vw, 3.4rem);
+  letter-spacing: -0.02em;
+}
+
+header p {
+  font-family: var(--font-display);
+  color: var(--mint);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+nav a {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  padding: 0.3rem 0.9rem 0.3rem 0;
+  border-bottom: none;
+}
+
+nav a:not(:last-child) {
+  border-right: 1px solid var(--line);
+}
+
+nav a:hover,
+nav a:focus-visible,
+nav a.active {
+  color: var(--mint);
+}
+
+/* remove the raw " | " separators from source markup visually via spacing already;
+   the <a> tags remain simple links joined by text pipes in the HTML */
+
+/* ---------- Sections ---------- */
+
+section {
+  border-bottom: none;
+}
+
+section > hr {
+  display: none; /* hr separators between sections replaced by section padding + main hr rule below */
+}
+
+main > hr {
+  display: block;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+#home p:first-of-type {
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+/* ---------- Skills ---------- */
+
+#skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+#skills li {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.9rem;
+}
+
+/* ---------- Projects ---------- */
+
+#projects article {
+  border-left: 2px solid var(--line);
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  margin-bottom: 2rem;
+  transition: border-color 0.15s ease;
+}
+
+#projects article:last-child {
+  margin-bottom: 0;
+}
+
+#projects article:hover {
+  border-left-color: var(--mint);
+}
+
+#projects article p {
+  margin-bottom: 0.6rem;
+}
+
+#projects article a {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---------- Education ---------- */
+
+#education h3 {
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+#education p {
+  margin-bottom: 0.25em;
+}
+
+/* ---------- Contact ---------- */
+
+address {
+  font-style: normal;
+  margin-bottom: 2rem;
+}
+
+address p {
+  margin-bottom: 0.5em;
+  color: var(--text-dim);
+}
+
+#contact h3 {
+  margin-top: 2rem;
+}
+
+form {
+  margin-top: 1.25rem;
+  max-width: 480px;
+}
+
+form p {
+  margin-bottom: 1.1rem;
+}
+
+label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.65rem 0.75rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+input:hover,
+textarea:hover {
+  border-color: #35496a;
+}
+
+input:focus,
+textarea:focus {
+  background: var(--surface-raised);
+  border-color: var(--mint);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+button[type="submit"] {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--mint);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.75rem 1.6rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+button[type="submit"]:hover {
+  background: #7ff2df;
+}
+
+button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+button[type="submit"].is-loading {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.form-status {
+  margin-top: 0.9rem;
+  font-size: 0.88rem;
+  font-family: var(--font-body);
+}
+
+.form-status[data-state="success"] {
+  color: var(--mint);
+}
+
+.form-status[data-state="error"] {
+  color: var(--amber);
+}
+
+.field-error {
+  display: block;
+  color: var(--amber);
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* ---------- Back to top ---------- */
+
+#back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--mint);
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.15s ease;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#back-to-top:hover {
+  border-color: var(--mint);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+  header,
+  main > section,
+  footer {
+    padding: 2.5rem 1.25rem;
+  }
+
+  header {
+    padding-top: 3rem;
+  }
+
+  #skills ul {
+    gap: 0.5rem;
+  }
+
+  #back-to-top {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
